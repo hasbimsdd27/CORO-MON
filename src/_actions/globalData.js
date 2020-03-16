@@ -15,7 +15,7 @@ export const getDataCountry = id => {
   return {
     type: GET_DATA_COUNTRY,
     payload: async () => {
-      const res = await API.get(`/countries/${id}`);
+      const res = await API.get(`/?country=${id}`);
       return res.data;
     }
   };

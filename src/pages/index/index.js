@@ -61,7 +61,7 @@ const Index = props => {
       setTheme(false);
     }
   };
-
+  console.log(GlobalData);
   return props.GlobalData.loading || !props.GlobalData.data ? (
     <Loading />
   ) : (
@@ -100,7 +100,7 @@ const Index = props => {
             <option value="world">World</option>
             {Countries.map((item, index) => (
               <option key={index} value={item.code}>
-                {item.name}
+                {item.country}
               </option>
             ))}
           </Form.Control>
@@ -114,8 +114,8 @@ const Index = props => {
           alt="123"
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Confirmed</h2>
-        {GlobalData.confirmed ? (
-          <NumberFormat number={GlobalData.confirmed.value} />
+        {GlobalData.cmt ? (
+          <NumberFormat number={GlobalData.cmt} />
         ) : (
           <p>Loading...</p>
         )}
@@ -128,11 +128,8 @@ const Index = props => {
           alt="123"
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Recovered</h2>
-        {GlobalData.confirmed ? (
-          <NumberFormat number={GlobalData.recovered.value} />
-        ) : (
-          <p>Loading...</p>
-        )}
+
+        <NumberFormat number={GlobalData.sdt} />
       </div>
       <div className="blocks" style={themeBlock}>
         <img
@@ -142,11 +139,8 @@ const Index = props => {
           alt="123"
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Deaths</h2>
-        {GlobalData.confirmed ? (
-          <NumberFormat number={GlobalData.deaths.value} />
-        ) : (
-          <p>Loading...</p>
-        )}
+
+        <NumberFormat number={GlobalData.fst} />
       </div>
       <div className="blocks" style={themeBlock}>
         <img
@@ -156,11 +150,8 @@ const Index = props => {
           alt="123"
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Last Update</h2>
-        {GlobalData.confirmed ? (
-          <DateTime data={GlobalData.lastUpdate} />
-        ) : (
-          <p>Loading...</p>
-        )}
+
+        <DateTime data={GlobalData.scraped_at} />
       </div>
 
       <div className="blocks" style={themeBlock}>
