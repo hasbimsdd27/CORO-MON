@@ -61,7 +61,6 @@ const Index = props => {
       setTheme(false);
     }
   };
-  console.log(GlobalData);
   return props.GlobalData.loading || !props.GlobalData.data ? (
     <Loading />
   ) : (
@@ -100,7 +99,7 @@ const Index = props => {
             <option value="world">World</option>
             {Countries.map((item, index) => (
               <option key={index} value={item.code}>
-                {item.country}
+                {item.name}
               </option>
             ))}
           </Form.Control>
@@ -114,8 +113,8 @@ const Index = props => {
           alt="123"
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Confirmed</h2>
-        {GlobalData.cmt ? (
-          <NumberFormat number={GlobalData.cmt} />
+        {GlobalData.confirmed ? (
+          <NumberFormat number={GlobalData.confirmed.value} />
         ) : (
           <p>Loading...</p>
         )}
@@ -129,7 +128,11 @@ const Index = props => {
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Recovered</h2>
 
-        <NumberFormat number={GlobalData.sdt} />
+        {GlobalData.recovered ? (
+          <NumberFormat number={GlobalData.recovered.value} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
       <div className="blocks" style={themeBlock}>
         <img
@@ -140,7 +143,11 @@ const Index = props => {
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Deaths</h2>
 
-        <NumberFormat number={GlobalData.fst} />
+        {GlobalData.deaths ? (
+          <NumberFormat number={GlobalData.deaths.value} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
       <div className="blocks" style={themeBlock}>
         <img
@@ -151,7 +158,11 @@ const Index = props => {
         ></img>
         <h2 style={{ marginBottom: "-3rem" }}>Last Update</h2>
 
-        <DateTime data={GlobalData.scraped_at} />
+        {GlobalData.confirmed ? (
+          <DateTime data={GlobalData.lastUpdate} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
 
       <div className="blocks" style={themeBlock}>
